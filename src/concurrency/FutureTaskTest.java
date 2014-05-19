@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 /**
- * ²âÊÔFutureTaskµÄÓÃ·¨£¬Èç¹û²»Ïë·ÖÖ§Ïß³Ì×èÈûÖ÷Ïß³Ì£¬ÓÖÏëÈ¡µÃ·ÖÖ§Ïß³ÌµÄÖ´ĞĞ½á¹û£¬¾ÍÓÃFutureTask
+ * æµ‹è¯•FutureTaskçš„ç”¨æ³•ï¼Œå¦‚æœä¸æƒ³åˆ†æ”¯çº¿ç¨‹é˜»å¡ä¸»çº¿ç¨‹ï¼Œåˆæƒ³å–å¾—åˆ†æ”¯çº¿ç¨‹çš„æ‰§è¡Œç»“æœï¼Œå°±ç”¨FutureTask
  * 
  * @author Administrator
  * 
@@ -17,22 +17,22 @@ public class FutureTaskTest {
 	 */
 	public static void main(String[] args) {
 		CountNum cn = new CountNum(0);
-		// FutureTask<Integer> ÕâÀïµÄ±íÊ¾·µ»ØµÄÊÇInteger
+		// FutureTask<Integer> è¿™é‡Œçš„è¡¨ç¤ºè¿”å›çš„æ˜¯Integer
 		FutureTask<Integer> ft = new FutureTask<Integer>(cn);
 		Thread td = new Thread(ft);
-		System.out.println("futureTask¿ªÊ¼Ö´ĞĞ¼ÆËã:" + System.currentTimeMillis());
+		System.out.println("futureTaskå¼€å§‹æ‰§è¡Œè®¡ç®—:" + System.currentTimeMillis());
 		td.start();
-		System.out.println("main Ö÷Ïß³Ì¿ÉÒÔ×öĞ©ÆäËûÊÂÇé:" + System.currentTimeMillis());
+		System.out.println("main ä¸»çº¿ç¨‹å¯ä»¥åšäº›å…¶ä»–äº‹æƒ…:" + System.currentTimeMillis());
 		try {
-			// futureTaskµÄget·½·¨»á×èÈû£¬ÖªµÀ¿ÉÒÔÈ¡µÃ½á¹ûÎªÖ¹
+			// futureTaskçš„getæ–¹æ³•ä¼šé˜»å¡ï¼ŒçŸ¥é“å¯ä»¥å–å¾—ç»“æœä¸ºæ­¢
 			Integer result = ft.get();
-			System.out.println("¼ÆËãµÄ½á¹ûÊÇ:" + result);
+			System.out.println("è®¡ç®—çš„ç»“æœæ˜¯:" + result);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
-		System.out.println("È¡µÃ·ÖÖ§Ïß³ÌÖ´ĞĞµÄ½á¹ûºó£¬Ö÷Ïß³Ì¿ÉÒÔ¼ÌĞø´¦ÀíÆäËûÊÂÏî");
+		System.out.println("å–å¾—åˆ†æ”¯çº¿ç¨‹æ‰§è¡Œçš„ç»“æœåï¼Œä¸»çº¿ç¨‹å¯ä»¥ç»§ç»­å¤„ç†å…¶ä»–äº‹é¡¹");
 	}
 
 }
@@ -48,9 +48,9 @@ class CountNum implements Callable<Integer> {
 		for (int i = 0; i < 100; i++) {
 			sum = sum + i;
 		}
-		// ĞİÃß5ÃëÖÓ£¬¹Û²ìÖ÷Ïß³ÌĞĞÎª£¬Ô¤ÆÚµÄ½á¹ûÊÇÖ÷Ïß³Ì»á¼ÌĞøÖ´ĞĞ£¬µ½ÒªÈ¡µÃFutureTaskµÄ½á¹ûÊÇµÈ´ıÖ±ÖÁÍê³É¡£
+		// ä¼‘çœ 5ç§’é’Ÿï¼Œè§‚å¯Ÿä¸»çº¿ç¨‹è¡Œä¸ºï¼Œé¢„æœŸçš„ç»“æœæ˜¯ä¸»çº¿ç¨‹ä¼šç»§ç»­æ‰§è¡Œï¼Œåˆ°è¦å–å¾—FutureTaskçš„ç»“æœæ˜¯ç­‰å¾…ç›´è‡³å®Œæˆã€‚
 		Thread.sleep(3000);
-		System.out.println("futureTask Ö´ĞĞÍê³É" + System.currentTimeMillis());
+		System.out.println("futureTask æ‰§è¡Œå®Œæˆ" + System.currentTimeMillis());
 		return sum;
 	}
 

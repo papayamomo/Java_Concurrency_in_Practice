@@ -8,29 +8,29 @@ public class CyclicBarrierTest {
 
 	public static void main(String[] args) {
 		ExecutorService service = Executors.newCachedThreadPool();
-		final CyclicBarrier cb = new CyclicBarrier(3);// ´´½¨CyclicBarrier¶ÔÏó²¢ÉèÖÃ3¸ö¹«¹²ÆÁÕÏµã
+		final CyclicBarrier cb = new CyclicBarrier(3);// åˆ›å»ºCyclicBarrierå¯¹è±¡å¹¶è®¾ç½®3ä¸ªå…¬å…±å±éšœç‚¹
 		for (int i = 0; i < 3; i++) {
 			Runnable runnable = new Runnable() {
 				public void run() {
 					try {
 						Thread.sleep((long) (Math.random() * 10000));
-						System.out.println("Ïß³Ì"
+						System.out.println("çº¿ç¨‹"
 								+ Thread.currentThread().getName()
-								+ "¼´½«µ½´ï¼¯ºÏµØµã1£¬µ±Ç°ÒÑÓĞ" + cb.getNumberWaiting()
-								+ "¸öÒÑ¾­µ½´ï£¬ÕıÔÚµÈºò");
-						cb.await();// µ½´ËÈç¹ûÃ»ÓĞ´ïµ½¹«¹²ÆÁÕÏµã£¬Ôò¸ÃÏß³Ì´¦ÓÚµÈ´ı×´Ì¬£¬Èç¹û´ïµ½¹«¹²ÆÁÕÏµãÔòËùÓĞ´¦ÓÚµÈ´ıµÄÏß³Ì¶¼¼ÌĞøÍùÏÂÔËĞĞ
+								+ "å³å°†åˆ°è¾¾é›†åˆåœ°ç‚¹1ï¼Œå½“å‰å·²æœ‰" + cb.getNumberWaiting()
+								+ "ä¸ªå·²ç»åˆ°è¾¾ï¼Œæ­£åœ¨ç­‰å€™");
+						cb.await();// åˆ°æ­¤å¦‚æœæ²¡æœ‰è¾¾åˆ°å…¬å…±å±éšœç‚¹ï¼Œåˆ™è¯¥çº¿ç¨‹å¤„äºç­‰å¾…çŠ¶æ€ï¼Œå¦‚æœè¾¾åˆ°å…¬å…±å±éšœç‚¹åˆ™æ‰€æœ‰å¤„äºç­‰å¾…çš„çº¿ç¨‹éƒ½ç»§ç»­å¾€ä¸‹è¿è¡Œ
 
 						Thread.sleep((long) (Math.random() * 10000));
-						System.out.println("Ïß³Ì"
+						System.out.println("çº¿ç¨‹"
 								+ Thread.currentThread().getName()
-								+ "¼´½«µ½´ï¼¯ºÏµØµã2£¬µ±Ç°ÒÑÓĞ" + cb.getNumberWaiting()
-								+ "¸öÒÑ¾­µ½´ï£¬ÕıÔÚµÈºò");
+								+ "å³å°†åˆ°è¾¾é›†åˆåœ°ç‚¹2ï¼Œå½“å‰å·²æœ‰" + cb.getNumberWaiting()
+								+ "ä¸ªå·²ç»åˆ°è¾¾ï¼Œæ­£åœ¨ç­‰å€™");
 						cb.await();
 						Thread.sleep((long) (Math.random() * 10000));
-						System.out.println("Ïß³Ì"
+						System.out.println("çº¿ç¨‹"
 								+ Thread.currentThread().getName()
-								+ "¼´½«µ½´ï¼¯ºÏµØµã3£¬µ±Ç°ÒÑÓĞ" + cb.getNumberWaiting()
-								+ "¸öÒÑ¾­µ½´ï£¬ÕıÔÚµÈºò");
+								+ "å³å°†åˆ°è¾¾é›†åˆåœ°ç‚¹3ï¼Œå½“å‰å·²æœ‰" + cb.getNumberWaiting()
+								+ "ä¸ªå·²ç»åˆ°è¾¾ï¼Œæ­£åœ¨ç­‰å€™");
 						cb.await();
 					} catch (Exception e) {
 						e.printStackTrace();
