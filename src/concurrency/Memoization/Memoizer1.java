@@ -3,7 +3,7 @@ package concurrency.Memoization;
 import java.util.HashMap;
 import java.util.Map;
 
-import concurrency.GuardedBy;
+import annotation.GuardedBy;
 
 public class Memoizer1<A, V> implements Computable<A, V> {
 	@GuardedBy("this")

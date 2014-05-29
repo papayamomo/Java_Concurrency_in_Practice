@@ -17,11 +17,11 @@ public class LifecycleWebServer {
 		while (!exec.isShutdown()) {
 			try {
 				final Socket connection = socket.accept();
-				Runnable task = new Runnable() {
+				exec.execute(new Runnable() {
 					public void run() {
 						handleRequest(connection);
 					}
-				};
+				});
 			} catch (RejectedExecutionException e) {
 				if (!exec.isShutdown()) {
 					System.out.println("task submission rejected" + e);
